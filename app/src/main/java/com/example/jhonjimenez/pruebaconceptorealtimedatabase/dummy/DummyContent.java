@@ -32,9 +32,19 @@ public class DummyContent {
         }
     }
 
-    private static void addItem(Comida item) {
+    public static void addItem(Comida item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
+    }
+
+    public static void updateItem(Comida comida) {
+        ITEMS.set(ITEMS.indexOf(comida), comida);
+        ITEM_MAP.put(comida.getId(), comida);
+    }
+
+    public static void deleteItem(Comida comida) {
+        ITEMS.remove(comida);
+        ITEM_MAP.remove(comida);
     }
 
     private static Comida createDummyItem(int position) {
@@ -57,6 +67,10 @@ public class DummyContent {
         private String id;
         private String nombre;
         private String precio;
+
+        public Comida() {
+            //Firebase nos pide un constructor vacio para cada objeto que vamos a usar
+        }
 
         public Comida(String nombre, String precio) {
             this.nombre = nombre;
